@@ -1532,25 +1532,25 @@ header .header-logo a {
 	opacity: .6;
 	background-color: #000000;
 }
-#home .iw_inner {
+#map .iw_inner {
   width: 250px;
   padding: 10px;
   font-family: monospace;
   letter-spacing: -0.06em;
 }
-#home .iw_inner h3, #home .iw_inner p {
+#map .iw_inner h3, #map .iw_inner p {
   margin: 0;
 }
-#home .iw_inner p a {
+#map .iw_inner p a {
   color: #bd5e26;
   font-size: 16px;
   font-family: "montserrat", sans-serif;
   text-transform: uppercase;
 }
-#home .iw_inner p a:hover, #home .iw_inner p a:active {
+#map .iw_inner p a:hover, #map .iw_inner p a:active {
   text-decoration: underline;
 }
-#home .iw_inner p a.telnumber {
+#map .iw_inner p a.telnumber {
   font-size: 18px;
 }
 .home-content-table {
