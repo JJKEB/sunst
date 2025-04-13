@@ -90,6 +90,7 @@
                 backgroundColor: null // Keeps the background transparent
             }).then((renderedCanvas) => {
                 const dataURL = renderedCanvas.toDataURL('image/png');
+                alert(dataURL)
                 const link = document.createElement('a');
                 link.href = dataURL;
                 link.download = 'seal-transparent.png';
