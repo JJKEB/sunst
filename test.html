@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Transparent Seal</title>
+    <style>
+        .seal {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border: 5px solid red;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px auto;
+            background-color: transparent; /* Ensures background is transparent */
+        }
+        .seal::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 5px solid red;
+            border-radius: 50%;
+        }
+        .center-text {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .outer-text {
+            position: absolute;
+            font-size: 18px;
+            color: red;
+        }
+        .top {
+            top: -30px;
+            text-align: center;
+        }
+        .bottom {
+            bottom: -30px;
+            text-align: center;
+        }
+        .left {
+            left: -30px;
+            text-align: center;
+            transform: rotate(90deg);
+        }
+        .right {
+            right: -30px;
+            text-align: center;
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="seal" id="seal">
+        <div class="center-text">
+            <div>代</div>
+            <div>表</div>
+            <div>理</div>
+            <div>事</div>
+        </div>
+        <div class="outer-text top">中</div>
+        <div class="outer-text bottom">古</div>
+        <div class="outer-text left">文</div>
+        <div class="outer-text right">中</div>
+    </div>
+    <button id="download-btn">Download as Transparent Image</button>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <script>
+        document.getElementById('download-btn').addEventListener('click', () => {
+            const sealElement = document.getElementById('seal');
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Set canvas dimensions
+            canvas.width = sealElement.offsetWidth;
+            canvas.height = sealElement.offsetHeight;
+
+            // Ensure canvas background is transparent
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Use html2canvas to draw the element on the canvas
+            html2canvas(sealElement, {
+                backgroundColor: null // Keeps the background transparent
+            }).then((renderedCanvas) => {
+                const dataURL = renderedCanvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = dataURL;
+                link.download = 'seal-transparent.png';
+                link.click();
+            });
+        });
+    </script>
+    <!-- Add the html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
